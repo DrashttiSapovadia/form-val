@@ -1,0 +1,256 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+    <title>Reg Form</title>    
+    <style type="text/css">    
+        body{    
+            font-family: Calibri;    
+        }    
+        input[type="text"] {    
+            width: 250px;    
+        }    
+        input[type="submit"], input[type="reset"] {    
+            width: 77px;    
+            height: 27px;    
+            position: relative;left: 180px;    
+        }    
+        form{    
+            text-align: center;    
+            font-family: Calibri;    
+            font-size: 20px;    
+            border: 3px solid black;    
+            width: 600px;    
+            margin: 20px auto;    
+        }    
+        td {    
+            padding: 10px;    
+        }    
+        td:first-child {    
+            text-align: right;    
+            font-weight: bold;    
+        }    
+        td:last-child {    
+            text-align: left;    
+        }
+    </style>    
+    <script>    
+        
+        function validate() 
+        {   
+            //var profile_pic = document.reg_form.profile_pic;
+            var fname = document.reg_form.fname;    
+            var lname = document.reg_form.lname;    
+            var address = document.reg_form.address;       
+            var email = document.reg_form.email;    
+            var mobile = document.reg_form.mobile;    
+            var city = document.reg_form.city;    
+            var state = document.reg_form.state;
+            var country = document.reg_form.country;
+            var password = document.reg_form.password;
+
+            // if (profile_pic.value.length <= 0) 
+            // {    
+            //     alert("Photo is required");    
+            //     profile_pic.focus();    
+            //     return false;    
+            // }  
+            if (fname.value.length <= 0) {    
+                alert("Name is required");    
+                fname.focus();    
+                return false;    
+            }    
+            if (lname.value.length <= 0) {    
+                alert("Last Name is required");    
+                lname.focus();    
+                return false;    
+            }    
+            if (address.value.length <= 0) {    
+                alert("Address is required");    
+                address.focus();    
+                return false;    
+            }       
+            if (email.value.length <= 0) {    
+                alert("Email Id is required");    
+                email.focus();    
+                return false;    
+            }    
+            if (mobile.value.length <= 0) {    
+                alert("Mobile number is required");    
+                mobile.focus();    
+                return false;    
+            }    
+            if (city.value == "select city") {    
+                alert("city is required");    
+                city.focus();    
+                return false;    
+            }
+            if (state.value == "select state") {    
+                alert("state is required");    
+                state.focus();    
+                return false;    
+            } 
+            if (country.value == "select country") {    
+                alert("country is required");    
+                country.focus();    
+                return false;    
+            } 
+            if (password.value.length <= 0) {    
+                alert("password Id is required");    
+                password.focus();    
+                return false;    
+            }      
+            return false;        
+        }    
+            
+        function validate_email(field,alerttxt)
+            {
+                    with (field)
+                    {
+                        apos=value.indexOf("@");
+                        dotpos=value.lastIndexOf(".");
+                        if (apos<1||dotpos-apos<2){
+                            alert(alerttxt);return false;
+                        }
+                        else {
+                            return true;
+                        }
+                    }
+            }
+        function validatePassword() 
+            {
+                    const pass = document.getElementById("pass").value;
+                    const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,10}$/;
+                    if (pass.match(re)) {
+                    console.log("valid password")
+                    return true;
+                    }
+                    else{
+                    alert("Invalid Password")
+                    return false;
+                    }
+            }
+            
+        
+
+            function validation()
+            {
+                if(validate() )
+                {
+                   if(validate_email())
+                   {
+                     if(validatePassword())
+                     {
+                      return true;
+                     }
+                   }
+                }
+
+                else
+            {
+                return false;
+            }
+                
+            }
+      
+    </script>    
+</head>    
+<body>    
+    <center><h1>Form Validation using HTML,CSS,JavaScript</h1></center>    
+    <hr>    
+    <form method=""  name="reg_form" onsubmit="return validate()" >    
+        <h2>Registration Form</h2>    
+        <table>    
+            <tr>    
+                <td><label>First Name: </label></td>    
+                <td>    
+                    <input type="text" name="fname" placeholder="First Name">    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Last Name: </label></td>    
+                <td>    
+                    <input type="text" name="lname" placeholder="Last Name">    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Address: </label></td>    
+                <td>    
+                    <input type="textarea" size="50" name="address" placeholder="Address">    
+                </td>    
+            </tr>    
+               
+            <tr>    
+                <td><label>Email Id: </label></td>    
+                <td>    
+                    <input type="text" name="email" placeholder="example@gmail.com">    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Mobile: </label></td>    
+                <td>    
+                    <input type="number" name="mobile">    
+                </td>    
+            </tr>    
+            <tr>    
+            <td><label>City: </label></td>    
+                <td>    
+                    <select name="city">    
+                        <option value="select city">select city</option>    
+                        <option value="Abad">abad</option>    
+                        <option value="Surat">surat</option>    
+                        <option value="Rajkot">rajkot</option>    
+                        <option value="Vadodara">vadodara</option>    
+                    </select>    
+                </td>    
+            </tr>
+
+            <tr>    
+                <td><label>State: </label></td>    
+                    <td>    
+                        <select name="state">    
+                            <option value="select state">select state</option>    
+                            <option value="abad">abad</option>    
+                            <option value="surat">surat</option>    
+                            <option value="rajkot">rajkot</option>    
+                            <option value="vadodara">vadodara</option>    
+                        </select>    
+                    </td>    
+            </tr>
+            
+            <tr>    
+                <td><label>Country: </label></td>    
+                    <td>    
+                        <select name="country">    
+                            <option value="select country">select country</option>    
+                            <option value="abad">abad</option>    
+                            <option value="surat">surat</option>    
+                            <option value="rajkot">rajkot</option>    
+                            <option value="vadodara">vadodara</option>    
+                        </select>    
+                    </td>    
+            </tr>
+
+            <tr>
+                <td> <label> Password: </label></td>
+                <td>    
+                    <input type="text" name="password">    
+                </td> 
+            </tr>
+
+            <p>
+                <div>
+                    <label for="profile_pic">Photo</label>
+                    <input type="file" id="profile_pic" name="profile_pic"
+                          accept=".jpg, .jpeg, .png"/>
+                </div>
+            
+            <tr>    
+                <td>    
+                    <input type="submit" name="submit" value="Submit" />    
+                    <input type="reset" name="reset" value="Reset"/>    
+                </td>    
+            </tr>             
+        </table>    
+    </form>    
+</body>    
+</html>     
